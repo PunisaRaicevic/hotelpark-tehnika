@@ -1,0 +1,19 @@
+{
+  "appId": "com.hotelpark.tehnika",
+  "appName": "HotelPark Tehnička Služba",
+  "webDir": "dist/public",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": false
+  },
+  "plugins": {
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
+    }
+  }
+}
