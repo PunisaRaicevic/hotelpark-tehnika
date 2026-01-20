@@ -1,6 +1,6 @@
 {
   "appId": "com.hotelpark.tehnika",
-  "appName": "HotelPark Tehnička Služba",
+  "appName": "Hotel Park",
   "webDir": "dist/public",
   "bundledWebRuntime": false,
   "server": {
