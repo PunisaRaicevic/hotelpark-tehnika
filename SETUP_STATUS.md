@@ -29,11 +29,14 @@
 
 ## PREOSTALI KORACI ⏳
 
-### 5. Railway deploy ⏳
-- Kreirati projekat na Railway
-- Povezati sa GitHub repom
+### 5. Railway deploy ⏳ ← OVDJE SMO STALI!
+- Idite na: https://railway.app/
+- "Start a New Project" → "Deploy from GitHub repo"
+- Izaberite: hotelpark-tehnika
 - Dodati environment varijable (lista ispod)
 - Testirati deployment
+
+NAPOMENA: Fly.io nije radio, prebacili smo se na Railway.
 
 ### 6. Supabase Webhook ⏳
 - Konfigurisati webhook za tasks tabelu

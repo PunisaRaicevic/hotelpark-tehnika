@@ -1,11 +1,11 @@
 {
-  "name": "HGBR Tehnička Služba",
-  "short_name": "HGBR Tech",
-  "description": "Aplikacija za praćenje prijava i izvršenja reklamacija tehničke službe u hotelu",
+  "name": "Hotel Park - Tehnička Služba",
+  "short_name": "Hotel Park",
+  "description": "Aplikacija za praćenje i upravljanje tehničkim servisima u hotelu",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1E5BA8",
+  "background_color": "#ecfdf5",
+  "theme_color": "#059669",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -74,10 +74,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Nova reklamacija",
-      "short_name": "Nova",
-      "description": "Prijavi novu reklamaciju",
-      "url": "/new-complaint",
+      "name": "Novi zadatak",
+      "short_name": "Novi",
+      "description": "Kreiraj novi zadatak",
+      "url": "/tasks/new",
       "icons": [
         {
           "src": "/icons/shortcut-new.png",
@@ -86,10 +86,10 @@
       ]
     },
     {
-      "name": "Moje reklamacije",
-      "short_name": "Moje",
-      "description": "Pregledaj svoje reklamacije",
-      "url": "/my-complaints",
+      "name": "Moji zadaci",
+      "short_name": "Zadaci",
+      "description": "Pregledaj svoje zadatke",
+      "url": "/tasks",
       "icons": [
         {
           "src": "/icons/shortcut-list.png",
