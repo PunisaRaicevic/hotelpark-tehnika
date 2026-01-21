@@ -1,9 +1,9 @@
 import { Capacitor } from '@capacitor/core';
 
-// 🔥 Production Backend URL - Reserved VM (radi 24/7)
+// 🔥 Production Backend URL - Railway deployment
 // VAŽNO: Za mobilne aplikacije UVIJEK koristi hardkodirani URL
 // Ne koristiti VITE_API_URL jer Appflow može uključiti development URL
-const BACKEND_URL = "https://HGBRTehnickaSluzba.replit.app";
+const BACKEND_URL = "https://hotelpark-tehnika-production.up.railway.app";
 
 /**
  * Get the full API URL for a given endpoint

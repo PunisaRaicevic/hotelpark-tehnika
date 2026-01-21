@@ -1,11 +1,8 @@
 {
-  "name": "Hotel Maintenance App",
+  "name": "Hotel Park Tehnika",
   "integrations": {
     "capacitor": {}
   },
   "type": "react",
-  "id": "hotel-maintenance",
-  "hooks": {
-    "build:before": "npm run build"
-  }
+  "id": "hotel-maintenance"
 }

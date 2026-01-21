@@ -133,7 +133,7 @@ export default function WorkerDashboard() {
     // For web: use current origin
     let socketUrl: string;
     if (Capacitor.isNativePlatform()) {
-      socketUrl = import.meta.env.VITE_API_URL || "https://0f8348da-785a-4a32-a048-3781e2402d8c-00-1ifebzeou9igx.picard.replit.dev";
+      socketUrl = "https://hotelpark-tehnika-production.up.railway.app";
     } else {
       socketUrl = window.location.origin;
     }

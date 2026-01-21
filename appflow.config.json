@@ -1,0 +1,17 @@
+{
+  "apps": {
+    "default": {
+      "id": "hotel-maintenance",
+      "root": ".",
+      "webDir": "dist/public",
+      "appflow": {
+        "connect": {
+          "platform": "capacitor",
+          "build": {
+            "script": "ionic:build"
+          }
+        }
+      }
+    }
+  }
+}

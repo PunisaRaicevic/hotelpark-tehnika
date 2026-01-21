@@ -18,9 +18,8 @@ import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 import { Badge } from '@capawesome/capacitor-badge';
 import { Capacitor } from '@capacitor/core';
 
-// 🔥 Tvoj backend URL (SAMO OVO PROMENI AKO REPLIT PROMENI ADRESU)
-const BACKEND_URL =
-  "https://0f8348da-785a-4a32-a048-3781e2402d8c-00-1ifebzeou9igx.picard.replit.dev";
+// 🔥 Production Backend URL - Railway deployment
+const BACKEND_URL = "https://hotelpark-tehnika-production.up.railway.app";
 
 // ═══════════════════════════════════════════════════════════════
 // 🎯 PLATFORM DETECTION - detektuj odmah pri učitavanju
