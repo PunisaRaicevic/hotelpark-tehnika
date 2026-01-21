@@ -804,6 +804,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
+      // 🔥 SLANJE PUSH NOTIFIKACIJE KADA SE KREIRA ZADATAK SA DODELJENIM RADNIKOM
+      if (assigned_to && (status === "assigned_to_radnik" || status === "with_sef")) {
+        console.log(`📱 [POST /api/tasks] Šaljem push notifikaciju radniku: ${assigned_to}`);
+        const workerIds = assigned_to.split(",").map((id: string) => id.trim());
+
+        for (const workerId of workerIds) {
+          sendPushToAllUserDevices(
+            workerId,
+            `Nova reklamacija #${task.id.slice(0, 8)}`,
+            `${task.location || task.title} - ${task.priority === "urgent" ? "HITNO" : task.description || "Kliknite za detalje"}`,
+            task.id,
+            task.priority as "urgent" | "normal" | "can_wait"
+          ).then((result) => {
+            console.log(`✅ [POST /api/tasks] Push poslat radniku ${workerId}:`, result);
+          }).catch((error) => {
+            console.error(`⚠️ [POST /api/tasks] Greška pri slanju FCM push-a radniku ${workerId}:`, error);
+          });
+        }
+      }
+
       res.json({ task });
     } catch (error) {
       console.error("❌ [ERROR] Error creating task:", error);
