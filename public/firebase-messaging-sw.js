@@ -2,12 +2,12 @@ importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js'
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMaf507Om6Dq-RUKmaStCnrfQ9ywUdo44",
-  authDomain: "hgbrodrzavanje-39543.firebaseapp.com",
-  projectId: "hgbrodrzavanje-39543",
-  storageBucket: "hgbrodrzavanje-39543.appspot.com",
-  messagingSenderId: "227433602872",
-  appId: "1:227433602872:web:3670adb0773591e68debcd",
+  apiKey: "AIzaSyCnuos4xgks1AkDaLfmpJD01lFp9ZTrkT0",
+  authDomain: "hotelpark-tehnika.firebaseapp.com",
+  projectId: "hotelpark-tehnika",
+  storageBucket: "hotelpark-tehnika.firebasestorage.app",
+  messagingSenderId: "615826196463",
+  appId: "1:615826196463:web:0c8c1b6ec36bb96973181a",
 };
 
 firebase.initializeApp(firebaseConfig);

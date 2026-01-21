@@ -22,12 +22,12 @@ async function initializeFirebaseWeb() {
     const { getMessaging } = await import("firebase/messaging");
 
     const firebaseConfig = {
-      apiKey: "AIzaSyAG8vYe5WM_3JhXYUj9C6UIrut4FnRBAxU",
-      authDomain: "hgbtapp.firebaseapp.com",
-      projectId: "hgbtapp",
-      storageBucket: "hgbtapp.firebasestorage.app",
-      messagingSenderId: "375153203002",
-      appId: "1:375153203002:android:d57aea9c9c9cd906372203",
+      apiKey: "AIzaSyCnuos4xgks1AkDaLfmpJD01lFp9ZTrkT0",
+      authDomain: "hotelpark-tehnika.firebaseapp.com",
+      projectId: "hotelpark-tehnika",
+      storageBucket: "hotelpark-tehnika.firebasestorage.app",
+      messagingSenderId: "615826196463",
+      appId: "1:615826196463:web:0c8c1b6ec36bb96973181a",
     };
 
     const app = initializeApp(firebaseConfig);

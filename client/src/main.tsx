@@ -19,7 +19,7 @@ import { Badge } from '@capawesome/capacitor-badge';
 import { Capacitor } from '@capacitor/core';
 
 // 🔥 Production Backend URL - Railway deployment
-// Build: 2026-01-21 - Database fix
+// Build: 2026-01-21 v2 - Firebase config fix (hotelpark-tehnika)
 const BACKEND_URL = "https://hotelpark-tehnika-production.up.railway.app";
 
 // ═══════════════════════════════════════════════════════════════
