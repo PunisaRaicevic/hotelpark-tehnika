@@ -1,9 +1,8 @@
 // ========================================================================
-// LEGACY: Firebase Cloud Messaging (FCM) Push Notifications
+// Firebase Cloud Messaging (FCM) Push Notifications
 // ========================================================================
-// This service has been REPLACED by OneSignal (server/services/onesignal.ts)
-// Keeping this file for historical reference and potential fallback.
-// Last active: November 2025
+// Primary push notification service for Hotel Park app
+// Sends notifications with sound and vibration to Android/iOS devices
 // ========================================================================
 
 import admin from 'firebase-admin';

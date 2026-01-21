@@ -130,31 +130,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (data.token) {
         localStorage.setItem('authToken', data.token);
         console.log('[AUTH] ✅ NEW JWT token stored:', data.token.substring(0, 50) + '...');
-        
-        // Send pending OneSignal Player ID if exists (received before login)
-        const pendingPlayerId = localStorage.getItem('pending_onesignal_player_id');
-        if (pendingPlayerId) {
-          console.log('[AUTH] 📱 Sending pending OneSignal Player ID to server...');
-          fetch(getApiUrl('/api/users/onesignal-player-id'), {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${data.token}`
-            },
-            body: JSON.stringify({ playerId: pendingPlayerId })
-          })
-            .then(response => {
-              if (response.ok) {
-                console.log('[AUTH] ✅ Pending OneSignal Player ID successfully sent!');
-                localStorage.removeItem('pending_onesignal_player_id');
-              } else {
-                console.error('[AUTH] ❌ Failed to send pending OneSignal Player ID');
-              }
-            })
-            .catch(error => {
-              console.error('[AUTH] ❌ Error sending pending OneSignal Player ID:', error);
-            });
-        }
+        // FCM token registration is handled by useFCM hook in App.tsx
       } else {
         console.warn('[AUTH] ⚠️ No JWT token received from server');
       }

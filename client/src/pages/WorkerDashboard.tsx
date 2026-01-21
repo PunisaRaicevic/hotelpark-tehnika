@@ -91,10 +91,10 @@ export default function WorkerDashboard() {
   useEffect(() => {
     if (!user?.id) return;
 
-    // Check if Capacitor notifications are already granted (OneSignal handles native)
+    // Check if Capacitor notifications are already granted (FCM handles native)
     if (capacitorNotifications.isAvailable()) {
-      // OneSignal manages native permissions automatically
-      console.log('[NOTIFICATIONS] OneSignal handles native permissions');
+      // FCM/Capacitor Push manages native permissions automatically
+      console.log('[NOTIFICATIONS] FCM handles native permissions');
     } else {
       // Web platform - check browser notifications
       if ('Notification' in window) {

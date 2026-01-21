@@ -9,15 +9,15 @@ export const capacitorNotifications = {
   },
 
   /**
-   * Request permission (handled by OneSignal now)
+   * Request permission (handled by Capacitor Push Notifications)
    */
   requestPermission: async (): Promise<boolean> => {
-    console.log('[NOTIFICATIONS] Permission handled by OneSignal');
+    console.log('[NOTIFICATIONS] Permission handled by Capacitor Push Notifications');
     return true;
   },
 
   /**
-   * Show notification (handled by OneSignal now)
+   * Show notification (handled by Firebase Cloud Messaging)
    */
   showNotification: async (
     title: string,
@@ -39,7 +39,7 @@ export const capacitorNotifications = {
       return;
     }
 
-    console.log('[NOTIFICATIONS] Native notifications handled by OneSignal');
+    console.log('[NOTIFICATIONS] Native notifications handled by FCM');
   },
 
   /**
@@ -76,7 +76,7 @@ export const capacitorNotifications = {
    * Cancel all notifications
    */
   cancelAll: async (): Promise<void> => {
-    console.log('[NOTIFICATIONS] OneSignal handles notification clearing');
+    console.log('[NOTIFICATIONS] FCM handles notification clearing');
   },
 
   /**

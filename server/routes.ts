@@ -6,8 +6,8 @@ import { processRecurringTasks, ensureChildTasksExist } from "./services/recurri
 import { initializeSocket, notifyWorkers, notifyTaskUpdate } from "./socket";
 import { z } from "zod";
 import { generateToken, verifyToken, extractTokenFromHeader } from "./auth";
-import { sendOneSignalToUser } from "./services/onesignal";
-// --- NOVI IMPORTI ZA NOTIFIKACIJE ---
+// Firebase Cloud Messaging for push notifications
+import { sendPushToAllUserDevices, initializeFirebase } from "./services/firebase";
 import { sendPushNotification } from "./services/notificationService";
 
 // Validation schemas
@@ -422,43 +422,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       res.json({ message: "Logged out successfully" });
     });
-  });
-
-  // Register OneSignal Player ID
-  app.post("/api/users/onesignal-player-id", requireAuth, async (req, res) => {
-    try {
-      const { playerId } = req.body;
-
-      if (!playerId || typeof playerId !== "string") {
-        return res.status(400).json({ error: "Valid Player ID is required" });
-      }
-
-      const userId = req.session.userId;
-      if (!userId) {
-        return res.status(401).json({ error: "Not authenticated" });
-      }
-
-      const { createClient } = await import('@supabase/supabase-js');
-      const supabase = createClient(
-        process.env.SUPABASE_URL!,
-        process.env.SUPABASE_SERVICE_ROLE_KEY!
-      );
-
-      const { error } = await supabase
-        .from('users')
-        .update({ onesignal_player_id: playerId })
-        .eq('id', userId);
-
-      if (error) {
-        throw error;
-      }
-
-      console.log(`✅ OneSignal Player ID registered for user ${userId}`);
-      res.json({ success: true, message: "OneSignal Player ID registered successfully" });
-    } catch (error) {
-      console.error("Error registering OneSignal Player ID:", error);
-      res.status(500).json({ error: "Internal server error" });
-    }
   });
 
   // Register FCM Token - Save to user_device_tokens table
@@ -981,15 +944,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const workerIds = assigned_to.split(",").map((id: string) => id.trim());
 
         for (const workerId of workerIds) {
-          // Koristimo postojeći OneSignal servis (ili možeš zameniti sa novim, svejedno je)
-          sendOneSignalToUser(
+          // Firebase Cloud Messaging push notifikacija
+          sendPushToAllUserDevices(
             workerId,
             `Nova reklamacija #${task.id.slice(0, 8)}`,
             `${task.location || task.title} - ${task.priority === "urgent" ? "HITNO" : task.description || "Kliknite za detalje"}`,
             task.id,
             task.priority as "urgent" | "normal" | "can_wait"
           ).catch((error) => {
-            console.error(`⚠️ Greška pri slanju OneSignal push-a radniku ${workerId}:`, error);
+            console.error(`⚠️ Greška pri slanju FCM push-a radniku ${workerId}:`, error);
           });
         }
       }
