@@ -1,4 +1,4 @@
-package com.budvanskarivijera.hotel;
+package com.hotelpark.tehnika;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -33,7 +33,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        
+
         Log.d(TAG, "Message received from: " + remoteMessage.getFrom());
 
         String title = null;
@@ -66,7 +66,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager notificationManager = 
+            NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             // Proveri da li kanal vec postoji
@@ -86,7 +86,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             channel.setDescription("Notifikacije za nove reklamacije i zadatke");
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{0, 500, 200, 500}); // Custom vibration
-            
+
             // DEFAULT SYSTEM SOUND (kao SMS)
             Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -104,15 +104,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void showNotification(String title, String body) {
-        NotificationManager notificationManager = 
+        NotificationManager notificationManager =
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Intent za otvaranje aplikacije
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(
-            this, 
-            0, 
+            this,
+            0,
             intent,
             PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE
         );
@@ -134,7 +134,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         int notificationId = (int) System.currentTimeMillis();
         notificationManager.notify(notificationId, notificationBuilder.build());
-        
+
         Log.d(TAG, "Notification shown with ID: " + notificationId);
     }
 
