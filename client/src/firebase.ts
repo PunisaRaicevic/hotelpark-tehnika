@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
+import { getMessaging, getToken as firebaseGetToken, Messaging } from "firebase/messaging";
+import { Capacitor } from "@capacitor/core";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAG8vYe5WM_3JhXYUj9C6UIrut4FnRBAxU",
@@ -11,6 +12,29 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
+
+// Firebase Web Messaging is only available on web platform
+// On native (Android/iOS), use Capacitor Push Notifications instead
+let messaging: Messaging | null = null;
+
+if (!Capacitor.isNativePlatform()) {
+  try {
+    messaging = getMessaging(app);
+    console.log("[Firebase] Web messaging initialized");
+  } catch (error) {
+    console.warn("[Firebase] Could not initialize web messaging:", error);
+  }
+} else {
+  console.log("[Firebase] Native platform detected - using Capacitor Push Notifications");
+}
+
+// Wrapper for getToken that handles null messaging
+const getToken = async (messagingInstance: Messaging | null, options?: { vapidKey?: string }) => {
+  if (!messagingInstance) {
+    console.warn("[Firebase] Messaging not available on this platform");
+    return null;
+  }
+  return firebaseGetToken(messagingInstance, options);
+};
 
 export { messaging, getToken };
