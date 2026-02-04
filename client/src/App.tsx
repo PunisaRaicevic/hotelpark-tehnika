@@ -16,7 +16,7 @@ import { IonApp, setupIonicReact } from "@ionic/react";
 import { Capacitor } from "@capacitor/core";
 import { useFCM } from "@/hooks/useFCM";
 import { messaging, getToken } from "./firebase";
-import { LiveUpdates } from "@capacitor/live-updates";
+import { sync as liveUpdatesSync, reload as liveUpdatesReload } from "@capacitor/live-updates";
 
 setupIonicReact({
   mode: "md",
@@ -28,11 +28,11 @@ async function checkForUpdates() {
 
   try {
     console.log("[Live Updates] Provjera ažuriranja...");
-    const result = await LiveUpdates.sync();
+    const result = await liveUpdatesSync();
 
     if (result.activeApplicationPathChanged) {
       console.log("[Live Updates] Novo ažuriranje dostupno, reloadam aplikaciju...");
-      await LiveUpdates.reload();
+      await liveUpdatesReload();
     } else {
       console.log("[Live Updates] Aplikacija je ažurna");
     }
