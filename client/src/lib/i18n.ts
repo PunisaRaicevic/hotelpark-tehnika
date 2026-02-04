@@ -237,7 +237,7 @@ const resources = {
       selectLanguage: 'Izaberite jezik',
       
       // Navigation
-      dashboard: 'Kontrolna tabla',
+      dashboard: 'Kontrolna tabla v2',
       tasks: 'Zadaci',
       myTasks: 'Moje reklamacije',
       users: 'Korisnici',
