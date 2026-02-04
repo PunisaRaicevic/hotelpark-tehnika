@@ -144,13 +144,13 @@ function Router() {
               <h2 className="text-2xl font-medium mb-2">
                 External Companies
               </h2>
-              <p>Coming soon...</p>
+              <p>Live Update radi! v2</p>
             </div>
           </Route>
           <Route path="/settings">
             <div className="text-center text-muted-foreground mt-12">
               <h2 className="text-2xl font-medium mb-2">Settings</h2>
-              <p>Coming soon...</p>
+              <p>Live Update radi! v2</p>
             </div>
           </Route>
           <Route component={NotFound} />
