@@ -16,10 +16,33 @@ import { IonApp, setupIonicReact } from "@ionic/react";
 import { Capacitor } from "@capacitor/core";
 import { useFCM } from "@/hooks/useFCM";
 import { messaging, getToken } from "./firebase";
+import { LiveUpdates } from "@capacitor/live-updates";
 
 setupIonicReact({
   mode: "md",
 });
+
+// Live Updates - provjera i primjena ažuriranja pri pokretanju
+async function checkForUpdates() {
+  if (!Capacitor.isNativePlatform()) return;
+
+  try {
+    console.log("[Live Updates] Provjera ažuriranja...");
+    const result = await LiveUpdates.sync();
+
+    if (result.activeApplicationPathChanged) {
+      console.log("[Live Updates] Novo ažuriranje dostupno, reloadam aplikaciju...");
+      await LiveUpdates.reload();
+    } else {
+      console.log("[Live Updates] Aplikacija je ažurna");
+    }
+  } catch (error) {
+    console.error("[Live Updates] Greška:", error);
+  }
+}
+
+// Pokreni provjeru ažuriranja
+checkForUpdates();
 
 function Router() {
   const { user, login, loading } = useAuth();

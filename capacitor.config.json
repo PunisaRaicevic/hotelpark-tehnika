@@ -14,6 +14,12 @@
         "sound",
         "alert"
       ]
+    },
+    "LiveUpdates": {
+      "appId": "0d37c45f",
+      "channel": "production",
+      "autoUpdateMethod": "background",
+      "maxVersions": 2
     }
   }
 }
